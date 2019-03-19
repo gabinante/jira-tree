@@ -16,7 +16,11 @@ export JIRA_USERNAME=$YOUR_JIRA_USERNAME
 export JIRA_PASSWORD=$YOUR_JIRA_PASSWORD
 export JIRA_HOST="https://jira.corp.yourcompany.com"
 
-usage: visualize.py [-h] [-p PROJECT] [-n PROJECT_NAME] [-l LABEL] [-a ASSIGNEE]
+virtualenv -p python3 venv
+source venv/bin/activate
+pip install -r requirements.txt
+
+usage: python visualize.py [-h] [-p PROJECT] [-n PROJECT_NAME] [-l LABEL] [-a ASSIGNEE]
 
 optional arguments:
   -h, --help                                           Show this help message and exit
