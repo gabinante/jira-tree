@@ -12,9 +12,9 @@ JIRA is quite terrible at reporting on subtasks in general, so I tend not to use
 
 ## Usage
 ```
-export JIRA_USERNAME=$JIRA_USERNAME
-export JIRA_PASSWORD=$JIRA_PASSWORD
-export JIRA_HOST=$JIRA_HOST
+export JIRA_USERNAME=$YOUR_JIRA_USERNAME
+export JIRA_PASSWORD=$YOUR_JIRA_PASSWORD
+export JIRA_HOST="https://jira.corp.yourcompany.com"
 
 usage: visualize.py [-h] [-p PROJECT] [-n PROJECT_NAME] [-l LABEL] [-a ASSIGNEE]
 
@@ -29,60 +29,60 @@ optional arguments:
 
 ## Example
 ```
-                                                                                         /-PHNXPROJ-47358 - Regression test - Verify that current upgrade path is not broken (New) 
+                                                                                         /-PHNXPROJ-47358 - Regression test - Verify that current upgrade path is not broken (New)
                                                                                         |
-                                                                                        |--PHNXPROJ-47357 - Create a Canary Server to launch deployment (New) 
+                                                                                        |--PHNXPROJ-47357 - Create a Canary Server to launch deployment (New)
                                  /PHNXPROJ-46800 - Support Phoenix Beta Deployment Tools   
-                                |                                                       |--PHNXPROJ-47355 - Support multi-kernel upgrades using existing tools (Code Review) 
+                                |                                                       |--PHNXPROJ-47355 - Support multi-kernel upgrades using existing tools (Code Review)
                                 |                                                       |
                                 |                                                        \PHNXPROJ-47214 - Gather Inventory information in realtime (In Progress) -create azure poller for cloud APIs
                                 |
-                                |                                                      /-PHNXPROJ-47205 - Test database restore Performance (In Progress) 
+                                |                                                      /-PHNXPROJ-47205 - Test database restore Performance (In Progress)
                                 |-PHNXPROJ-46797 - Support Phoenix beta for limited GA  
-                                |                                                      \-PHNXPROJ-44759 - Build Phoenix internals for multiple kernels (In Progress) 
+                                |                                                      \-PHNXPROJ-44759 - Build Phoenix internals for multiple kernels (In Progress)
                                 |
-                                |                                                                                 /-PHNXPROJ-47066 - Packer Job sometimes missing kernel updates (Waiting for Input) 
+                                |                                                                                 /-PHNXPROJ-47066 - Packer Job sometimes missing kernel updates (Waiting for Input)
                                 |-PHNXPROJ-44845 - Miscellaneous technical debt and bug fixes for Phoenix beta 1.0  
-                                |                                                                                 \-PHNXPROJ-43224 - Config templates are same for different SKUs (New) 
+                                |                                                                                 \-PHNXPROJ-43224 - Config templates are same for different SKUs (New)
                                 |
-                                |-PHNXPROJ-46803 - Monitoring and alerting for all components of Phoenix  -PHNXPROJ-47353 - Switch to pager duty and build JIRA Ticket Creation flow (New) 
+                                |-PHNXPROJ-46803 - Monitoring and alerting for all components of Phoenix  -PHNXPROJ-47353 - Switch to pager duty and build JIRA Ticket Creation flow (New)
                                 |
-                                |-PHNXPROJ-44552 - single vnet per node  -PHNXPROJ-47457 - api should acquire vnet space, peer to regional tools (In Progress) 
+                                |-PHNXPROJ-44552 - single vnet per node  -PHNXPROJ-47457 - api should acquire vnet space, peer to regional tools (In Progress)
                                 |
--Phoenix Project Beta Plan to GA                            /-PHNXPROJ-47456 - Code changes and bug fixes for Phoenix visualizations (New) 
+-Phoenix Project Beta Plan to GA                            /-PHNXPROJ-47456 - Code changes and bug fixes for Phoenix visualizations (New)
                                 |                          |
-                                |                          |--PHNXPROJ-47450 - Investigation of new release system using blue/green deployments  (In Progress) 
+                                |                          |--PHNXPROJ-47450 - Investigation of new release system using blue/green deployments  (In Progress)
                                 |                          |
-                                |                          |--PHNXPROJ-47444 - Ability to safely test new Phoenix release code (New) 
+                                |                          |--PHNXPROJ-47444 - Ability to safely test new Phoenix release code (New)
                                 |                          |
-                                |                          |--PHNXPROJ-47188 - Version bug with PhoenixMonitor (Code Review) 
+                                |                          |--PHNXPROJ-47188 - Version bug with PhoenixMonitor (Code Review)
                                 |                          |
-                                |                          |--PHNXPROJ-46893 - Nonprod Phoenix Provisioning (In Progress) 
+                                |                          |--PHNXPROJ-46893 - Nonprod Phoenix Provisioning (In Progress)
                                 |                          |
-                                |                          |--PHNXPROJ-46882 - Jenkins Pipeline Improvements (In Progress) 
+                                |                          |--PHNXPROJ-46882 - Jenkins Pipeline Improvements (In Progress)
                                 |                          |
-                                |                          |--PHNXPROJ-46812 - Disaster recovery plan (New) 
+                                |                          |--PHNXPROJ-46812 - Disaster recovery plan (New)
                                 |                          |
-                                |                          |--PHNXPROJ-46805 - integrations with internal tools (In Progress) 
+                                |                          |--PHNXPROJ-46805 - integrations with internal tools (In Progress)
                                 |                          |
-                                |                          |--PHNXPROJ-46800 - Support releases of beta using current tooling (In Progress) 
+                                |                          |--PHNXPROJ-46800 - Support releases of beta using current tooling (In Progress)
                                  \Orphaned Project Issues -  
-                                                           |--PHNXPROJ-46795 - Self-service tools support for customer service teams (New) 
+                                                           |--PHNXPROJ-46795 - Self-service tools support for customer service teams (New)
                                                            |
-                                                           |--PHNXPROJ-46793 - Secure & Maintainable Networking changes (New) 
+                                                           |--PHNXPROJ-46793 - Secure & Maintainable Networking changes (New)
                                                            |
-                                                           |--PHNXPROJ-46792 - Multi-region support (New) 
+                                                           |--PHNXPROJ-46792 - Multi-region support (New)
                                                            |
-                                                           |--PHNXPROJ-46791 - Upgrade existing customers to Phoenix Beta 1.0 (In Progress) 
+                                                           |--PHNXPROJ-46791 - Upgrade existing customers to Phoenix Beta 1.0 (In Progress)
                                                            |
-                                                           |--PHNXPROJ-46758 - Refresh the beta instances with Phoenix Project changes (Dev Blocked) 
+                                                           |--PHNXPROJ-46758 - Refresh the beta instances with Phoenix Project changes (Dev Blocked)
                                                            |
-                                                           |--PHNXPROJ-46516 - Verify connectivity between microservices (Waiting for Input) 
+                                                           |--PHNXPROJ-46516 - Verify connectivity between microservices (Waiting for Input)
                                                            |
-                                                           |--PHNXPROJ-46494 - Ability to provision new nodes on-demand (Reopened) 
+                                                           |--PHNXPROJ-46494 - Ability to provision new nodes on-demand (Reopened)
                                                            |
-                                                           |--PHNXPROJ-45479 - customers should be able to upload their own images (Dev Blocked) 
+                                                           |--PHNXPROJ-45479 - customers should be able to upload their own images (Dev Blocked)
                                                            |
                                                             \-PHNXPROJ-44552 - customers should be able to search images in the Phoenix directory (In Progress)
 
-``` 
+```
