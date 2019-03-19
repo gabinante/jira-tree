@@ -87,8 +87,8 @@ def gather_orphans() -> list:
 
 if __name__ == "__main__":
 
-    parser = argparse.ArgumentParser()
-    parser.add_argument("-p", "--project", help="the project that your epics are under", type=str)
+    parser = argparse.ArgumentParser(description='A simple tree visualization tool for JIRA Projects. You must have the following environment variables exported: JIRA_HOST JIRA_USERNAME JIRA_PASSWORD')
+    parser.add_argument("-p", "--project", help="the project that your epics are under", type=str, required=True)
     parser.add_argument("-n", "--project_name", help="A custom name for your project tree", type=str)
     parser.add_argument("-l", "--label", help="label to use for labelfilter", type=str)
     parser.add_argument("-a", "--assignee", help="the current issue assignee", type=str)
@@ -97,7 +97,11 @@ if __name__ == "__main__":
         labelquery = " AND labels IN ('{}')".format(args.label)
     else:
         labelquery = ""
-    project_name = args.project_name
+    if args.project_name:
+        project_name = args.project_name
+    else:
+        project_name = args.project
+
     project = args.project
 
     if args.assignee:
