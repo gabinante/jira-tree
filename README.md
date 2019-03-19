@@ -1,4 +1,4 @@
-# jira-tree
+# Jira Tree
 
 This is a simple script intended to build a hierarchical tree visualization of a JIRA project.
 It makes some assumptions about the structure of your JIRA project, namely that:
