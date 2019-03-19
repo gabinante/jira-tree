@@ -1,4 +1,4 @@
-# jira-tree
+# Jira Tree
 
 This is a simple script intended to build a hierarchical tree visualization of a JIRA project.
 It makes some assumptions about the structure of your JIRA project, namely that:
@@ -49,11 +49,11 @@ optional arguments:
                                 |                          |
                                 |                          |--PHNXPROJ-47450 - Investigation of new release system using blue/green deployments  (In Progress) 
                                 |                          |
-                                |                          |--PHNXPROJ-47444 - Ability to test ACS on azure release code (New) 
+                                |                          |--PHNXPROJ-47444 - Ability to safely test new Phoenix release code (New) 
                                 |                          |
                                 |                          |--PHNXPROJ-47188 - Version bug with PhoenixMonitor (Code Review) 
                                 |                          |
-                                |                          |--PHNXPROJ-46893 - Nonprod AWS Provisioning (In Progress) 
+                                |                          |--PHNXPROJ-46893 - Nonprod Phoenix Provisioning (In Progress) 
                                 |                          |
                                 |                          |--PHNXPROJ-46882 - Jenkins Pipeline Improvements (In Progress) 
                                 |                          |
