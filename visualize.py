@@ -8,7 +8,8 @@ def initialize_jira():
     try:
         username = os.environ.get('JIRA_USERNAME')
         password = os.environ.get('JIRA_PASSWORD')
-        options = { 'server': 'https://jira.corp.adobe.com'}
+        host = os.environ.get('JIRA_HOST')
+        options = { 'server': '{}'.format(host)}
     except Exception as e:
         print("Failed to load credentials from environment! Please ensure that JIRA_USERNAME and JIRA_PASSWORD are exported! {}".format(e))
     try:
