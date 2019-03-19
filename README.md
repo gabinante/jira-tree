@@ -12,6 +12,10 @@ JIRA is quite terrible at reporting on subtasks in general, so I tend not to use
 
 ## Usage
 ```
+export JIRA_USERNAME=$JIRA_USERNAME
+export JIRA_PASSWORD=$JIRA_PASSWORD
+export JIRA_HOST=$JIRA_HOST
+
 usage: visualize.py [-h] [-p PROJECT] [-n PROJECT_NAME] [-l LABEL] [-a ASSIGNEE]
 
 optional arguments:
