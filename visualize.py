@@ -36,7 +36,7 @@ def run():
             issue = epic.add_child(name="{} - {} ({}) ".format(issue, issue.fields.summary, issue.fields.status))
 
             for subtask in issue_links:
-                subtask = issue.add_child(name=subtask)
+                subtask = issue.add_child(name="{} - {} ({})".format(subtask, subtask.fields.summary, subtask.fields.status))
     orphans = tree.add_child(name="Orphaned issues  ")
     orphan_issues = gather_orphans()
     for issue in orphan_issues:
@@ -55,32 +55,28 @@ def gather_epics(project: str) -> list:
 # Gather all stories with a link to this epic
 def gather_children(epic: str) -> list:
     epic_children = []
-    epic_child_issues = jira.search_issues('"Epic Link" = "{}" AND resolution = Unresolved'.format(epic))
+    epic_child_issues = jira.search_issues('"Epic Link" = "{}" AND resolution = Unresolved{}{}{}'.format(epic, labelquery, assigneequery, componentquery))
     for issue in epic_child_issues:
-        # issue.fields.assignee = "unassigned" if issue.fields.assignee is None else issue.fields.assignee
-        if args.label or args.assignee:
-            if args.label and args.assignee and issue.fields.assignee and (args.label in issue.fields.labels and args.assignee in issue.fields.assignee.name):
-                epic_children.append(issue)
-            if not args.label and issue.fields.assignee and (args.assignee in issue.fields.assignee.name):
-                epic_children.append(issue)
-            if not args.assignee and (args.label in issue.fields.labels):
-                epic_children.append(issue)
-        else:
-            epic_children.append(issue)
+        epic_children.append(issue)
     return epic_children
 
 # Gather all tasks which implement the story
 def gather_links(issue: str) -> list:
     issue_links = []
+    # Gather issues that imeplement the current issue
     linked_issues = jira.search_issues('issue in linkedIssues({},"is implemented by") AND resolution = Unresolved'.format(issue))
     for issue in linked_issues:
-        issue_links.append(issue.fields.summary)
+        issue_links.append(issue)
+    # Gather subtasks of the issue
+    subtasks = jira.search_issues('issueFunction in subtasksOf("key = {}")'.format(issue))
+    for subtask in subtasks:
+        issue_links.append(subtask)
     return issue_links
 
 # Gather orphaned issues that have our label of choice
 def gather_orphans() -> list:
     orphan_links = []
-    orphaned_issues = jira.search_issues('issuetype != "Epic" AND "Epic Link" = Null AND Project = "{}" AND resolution = Unresolved{}{}'.format(project, labelquery, assigneequery))
+    orphaned_issues = jira.search_issues('issuetype != "Epic" AND "Epic Link" = Null AND Project = "{}" AND resolution = Unresolved{}{}{}'.format(project, labelquery, assigneequery, componentquery))
     for issue in orphaned_issues:
         orphan_links.append(issue)
     return orphan_links
@@ -92,6 +88,7 @@ if __name__ == "__main__":
     parser.add_argument("-n", "--project_name", help="A custom name for your project tree", type=str)
     parser.add_argument("-l", "--label", help="label to use for labelfilter", type=str)
     parser.add_argument("-a", "--assignee", help="the current issue assignee", type=str)
+    parser.add_argument("-c", "--component", help="component to filter for", type=str)
     args = parser.parse_args()
     if args.label:
         labelquery = " AND labels IN ('{}')".format(args.label)
@@ -101,13 +98,16 @@ if __name__ == "__main__":
         project_name = args.project_name
     else:
         project_name = args.project
-
-    project = args.project
-
+    if args.component:
+        componentquery = " AND component IN ('{}')".format(args.component)
+    else:
+        componentquery = ""
     if args.assignee:
         assigneequery = " AND assignee = '{}'".format(args.assignee)
     else:
         assigneequery = ""
+
+    project = args.project
 
     # Create an empty tree
     tree = Tree(name=project_name, format=3)
@@ -118,3 +118,4 @@ if __name__ == "__main__":
 
     # Go time!
     run()
+
