@@ -36,7 +36,7 @@ def run():
             issue = epic.add_child(name="{} - {} ({}) ".format(issue, issue.fields.summary, issue.fields.status))
 
             for subtask in issue_links:
-                subtask = issue.add_child(name=subtask)
+                subtask = issue.add_child(name="{} - ({})".format(subtask, subtask.fields.summary, subtask.fields.status))
     orphans = tree.add_child(name="Orphaned issues  ")
     orphan_issues = gather_orphans()
     for issue in orphan_issues:
@@ -57,15 +57,6 @@ def gather_children(epic: str) -> list:
     epic_children = []
     epic_child_issues = jira.search_issues('"Epic Link" = "{}" AND resolution = Unresolved{}{}{}'.format(epic, labelquery, assigneequery, componentquery))
     for issue in epic_child_issues:
-    #     # issue.fields.assignee = "unassigned" if issue.fields.assignee is None else issue.fields.assignee
-    #     if args.label or args.assignee:
-    #         if args.label and args.assignee and issue.fields.assignee and (args.label in issue.fields.labels and args.assignee in issue.fields.assignee.name):
-    #             epic_children.append(issue)
-    #         if not args.label and issue.fields.assignee and (args.assignee in issue.fields.assignee.name):
-    #             epic_children.append(issue)
-    #         if not args.assignee and (args.label in issue.fields.labels):
-    #             epic_children.append(issue)
-    #     else:
         epic_children.append(issue)
     return epic_children
 
@@ -75,7 +66,7 @@ def gather_links(issue: str) -> list:
     # Gather issues that imeplement the current issue
     linked_issues = jira.search_issues('issue in linkedIssues({},"is implemented by") AND resolution = Unresolved'.format(issue))
     for issue in linked_issues:
-        issue_links.append(issue.fields.summary)
+        issue_links.append(issue)
     # Gather subtasks of the issue
     subtasks = jira.search_issues('issueFunction in subtasksOf("key = {}")'.format(issue))
     for subtask in subtasks:
