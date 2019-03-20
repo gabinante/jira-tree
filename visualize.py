@@ -36,7 +36,7 @@ def run():
             issue = epic.add_child(name="{} - {} ({}) ".format(issue, issue.fields.summary, issue.fields.status))
 
             for subtask in issue_links:
-                subtask = issue.add_child(name="{} - ({})".format(subtask, subtask.fields.summary, subtask.fields.status))
+                subtask = issue.add_child(name="{} - {} ({})".format(subtask, subtask.fields.summary, subtask.fields.status))
     orphans = tree.add_child(name="Orphaned issues  ")
     orphan_issues = gather_orphans()
     for issue in orphan_issues:
