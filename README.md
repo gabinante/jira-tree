@@ -28,7 +28,7 @@ optional arguments:
   -n PROJECT_NAME, --project_name                      A custom name for your project tree
   -l LABEL, --label LABEL                              Label to use for labelfilter
   -a ASSIGNEE, --assignee                              The current issue assignee
-
+  -c COMPONENT, --component COMPONENT                  Component to filter for
 ```
 
 ## Example
