@@ -2,10 +2,10 @@
 
 This is a simple script intended to build a hierarchical tree visualization of a JIRA project.
 It makes some assumptions about the structure of your JIRA project, namely that:
-Project covers a project rather than several projects
-Epics comprise a project
-Stories build out epics (with Epic Links)
-Tasks implement stories (with "is implemented by" // "implements" links
+- Project covers a project rather than several projects
+- Epics comprise a project
+- Stories build out epics (with Epic Links)
+- Tasks implement stories (with "is implemented by" // "implements" links
 
 It would be trivial to change this script to include subtasks rather than "implements", but
 JIRA is quite terrible at reporting on subtasks in general, so I tend not to use them.
